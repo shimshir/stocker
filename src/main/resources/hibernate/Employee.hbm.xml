@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="org.admir.company.employee.model.Employee" table="employee" schema="stocker">
+
+        <id name="employeeId" column="employee_id" type="java.lang.Integer">
+            <generator class="native"/>
+        </id>
+
+        <property name="firstName" type="string" column="first_name"/>
+        <property name="lastName" type="string" column="last_name"/>
+        <property name="birthDate" type="date" column="birth_date"/>
+        <property name="eMail" type="string" column="e_mail"/>
+        <property name="companyId" type="java.lang.Integer"
+                  column="company_id" insert="false" update="false"/>
+
+        <many-to-one name="company" class="org.admir.company.model.Company" lazy="false"
+                     fetch="select" cascade="all" column="company_id" not-null="true"/>
+
+    </class>
+</hibernate-mapping>

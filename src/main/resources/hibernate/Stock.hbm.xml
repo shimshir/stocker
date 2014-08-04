@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="org.admir.company.stock.model.Stock" table="stock" schema="stocker">
+
+        <id name="companyId" type="java.lang.Integer">
+            <column name="company_id"/>
+
+            <generator class="foreign">
+                <param name="property">company</param>
+            </generator>
+        </id>
+
+        <one-to-one name="company" class="org.admir.company.model.Company"
+                    constrained="true"/>
+
+        <property name="stockCode" type="string" column="stock_code"/>
+        <property name="stockName" type="string" column="stock_name"/>
+        <property name="stockValue" type="java.lang.Float" column="stock_value"/>
+    </class>
+
+</hibernate-mapping>
