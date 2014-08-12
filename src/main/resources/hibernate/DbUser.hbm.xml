@@ -5,7 +5,7 @@
 
 <hibernate-mapping>
 
-    <class name="org.admir.security.model.DbUser" table="User" schema="stocker">
+    <class name="org.admir.security.model.DbUser" table="user" schema="stocker">
 
         <id name="username" type="string" column="username"/>
 
