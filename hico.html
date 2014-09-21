@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Pravila</title>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<style type="text/css">
+	.italic {
+		font-style: italic;
+	}
+	th, td {
+		border: 1px solid black;
+		text-align: left;
+		padding: 0 10px;
+	}
+	th {
+		background-color: #1A3380;
+		color: white;
+	}
+	td {
+		
+	}
+	tr:nth-child(even) {
+		background-color: #BAC2D9;
+	}
+	tr:nth-child(odd) {
+		background-color: #E3E7F0;
+	}
+	td:nth-child(1), td:nth-child(2), th:nth-child(1), th:nth-child(2){  
+		text-align: center;
+	}
+	#container {
+		width: 50%;
+		margin: 0 auto;
+		text-align: justify;
+		background-color: rgba(255,255,255,0.8);
+		padding: 0 50px 20px 50px;
+		border-radius: 10px;
+		border: 1px solid white;
+	}
+	table {
+		margin: 0 auto;
+		border-collapse: collapse;
+		font-size: 1rem;
+	}
+	h1 {
+		text-align: center;
+	}
+	html {
+		font-size: 1.2rem;
+	}
+	img {
+		width: 55%;
+		position: fixed;
+		left: 50%;
+		margin: 0px 0px 0px -27.5%;
+		top: 30px;
+		display: none;
+	}
+	button {
+		margin: 0 auto;
+		display: block;
+		background-color: #BAC2D9;
+		border: 1px solid black;
+		border-radius: 5px;
+		cursor: pointer;
+	}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<h1>Samo za Amricu :)</h1>
+		<table>
+			<tbody>
+				<tr>
+					<th>Piše se</th><th>Izgovara se</th><th>Napomena</th>
+				</tr>
+				<tr>
+					<td>ie</td><td>i</td><td>Duže <span class="italic">i</span></td>
+				</tr>
+				<tr>
+					<td>i</td><td>i</td><td>Kraće <span class="italic">i</span></td>
+				</tr>
+				<tr>
+					<td>ei</td><td>ai</td><td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>s</td><td>z</td><td>Kada je prvo slovo riječi</td>
+				</tr>
+				<tr>
+					<td>s</td><td>š</td><td>Kada je ispred <span class="italic">t</span> ili <span class="italic">p</span> (ima izuzetaka)</td>
+				</tr>
+				<tr>
+					<td>ss</td><td>s</td><td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>ß</td><td>s</td><td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>z</td><td>c</td><td>&nbsp;</td>
+				</tr>
+				<tr>
+					<td>sch</td><td>š</td><td>Sa vrhom jezika</td>
+				</tr>
+				<tr>
+					<td>ch</td><td>š<td>Sa sredinom jezika</td>
+				</tr>
+				<tr>
+					<td>g</td><td>š<td>Kada je na kraju riječi iza samoglasnika (sredinom jezika)</td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<button id="deal-with-it-button" onclick="fadeIn()">Klikni me!</button>
+		<p>Ovo su ti neka generalna pravila kojih sam se sjetio, ako bude još nešta dodaću na ovo pa ti opet poslati. Ovo sve vrijedi uglavnom za njihove riječi, a ne za strane (ima i tu izuzetaka) i da bi sve ovo pokupila i skontala izuzetke i sl. moraćeš ipak malo slušati njemački (filmove, serije, crtani i sl.), i jbi ga, čitaj malo, uzmi npr neki interesantan članak na wikipediji i čitaj njemačku verziju :P</p>
+		<button id="expert-button" onclick="expertMode();">Expert Mode</button>
+		<button id="normal-button" style="display: none;" onclick="normalMode();">Normal Mode</button>
+		<audio class="audioDemo">
+		   <source src="https://ia700508.us.archive.org/30/items/Hitler_Speeches/Hitler_Speeches%2F1932-07-21_-_Adolf_Hitler_-_Wahlkundgebung_der_NSDAP_in_Goettingen_4m_57s.mp3" type="audio/mpeg">
+		</audio>
+	</div>
+	<img id="dead-with-id" src="http://oi57.tinypic.com/2pop5xc.jpg"></img>
+	<script type="text/javascript">
+		var i = 0;
+		function fadeIn() {
+			$('#dead-with-id').fadeIn();
+			++i;
+		}
+		function fadeOut() {
+			if(i === 0)
+				return;
+			if (i <= 1) {
+				++i;
+				console.log(i);
+				return;
+			}
+			else {
+				i = 0;
+				$('#dead-with-id').fadeOut();
+			}
+		}
+		$("img").click(fadeOut);
+		$("html").click(fadeOut);
+		function expertMode() {
+			$("#container").css("border", "1px solid black");
+			$(".audioDemo").trigger('play');
+			$("html").css("background-image", "url('http://media.giphy.com/media/Jx6cRRYRD2BSo/giphy.gif')");
+			//$("html").css("background-image", "url('http://www.totalfascism.com/wp-content/uploads/2013/02/Eternal-Hero-Adolf-Hitler-Does-this-look-like-a-Jew-to-you.jpg')");
+			$("html").css("background-size", "20%");
+			$("#expert-button").css("display", "none");
+			$("#normal-button").css("display", "block");
+		}
+		function normalMode() {
+			$("#container").css("border", "1px solid white");
+			$(".audioDemo").trigger('pause');
+			$("html").css("background-image", "");
+			$("#expert-button").css("display", "block");
+			$("#normal-button").css("display", "none");
+		}
+	</script>
+</body>
+</html>
